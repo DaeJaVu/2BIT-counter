@@ -115,11 +115,11 @@ void GPIOPortF_Handler(void)
 	}
 	if(c > 3)
 	{
-        c = 0;
+        	c = 0;
         }
         if(c < 0)
         {
-        c = 3;
+        	c = 3;
         }
 }
 
@@ -149,22 +149,33 @@ int main(void)
 		  SysCtlDelay(2666667);
                   GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
-		  SysCtlDelay(8000000);
-
-							
+		  SysCtlDelay(8000000); // 1.5 second delay				
                   break;
               }
               case 1: // 01
               {
-								                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
+		  GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
                   GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x02);
                   SysCtlDelay(2666667);
+		  GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
+                  GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x04);
+		  SysCtlDelay(2666667);
+                  GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
+                  GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
+		  SysCtlDelay(8000000);
+                  break;
+              }
+	       case 2: // 10
+              {
 									GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x04);
+                  SysCtlDelay(2666667);
+                  GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x02);
+                  GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
 									SysCtlDelay(2666667);
                   GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
-								 	SysCtlDelay(10666667);
+								 	SysCtlDelay(8000000);
                   break;
               }
               case 3: // 10
@@ -177,7 +188,7 @@ int main(void)
 									SysCtlDelay(2666667);
                   GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
-								 	SysCtlDelay(10666667);
+								 	SysCtlDelay(8000000);
                   break;
               }
 	      default: // off
