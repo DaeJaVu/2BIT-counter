@@ -167,37 +167,37 @@ int main(void)
               }
 	       case 2: // 10
               {
-									GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
+		  GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x04);
                   SysCtlDelay(2666667);
                   GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x02);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
-									SysCtlDelay(2666667);
+		  SysCtlDelay(2666667);
                   GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
-								 	SysCtlDelay(8000000);
+		  SysCtlDelay(8000000);
                   break;
               }
               case 3: // 10
               {
-									GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
+		  GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x04);
                   SysCtlDelay(2666667);
                   GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x02);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
-									SysCtlDelay(2666667);
+		  SysCtlDelay(2666667);
                   GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
-								 	SysCtlDelay(8000000);
+		  SysCtlDelay(8000000);
                   break;
               }
 	      default: // off
               {
                   GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
-
                   break;
               }
-    }
-	}
+    	}
+}
+
 }
