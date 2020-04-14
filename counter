@@ -113,13 +113,13 @@ void GPIOPortF_Handler(void)
 		//counter imcremented by 1
 		c--;
 	}
-	if(c > 4)
+	if(c > 3)
 	{
         c = 0;
         }
         if(c < 0)
         {
-        c = 4;
+        c = 3;
         }
 }
 
@@ -180,21 +180,7 @@ int main(void)
 								 	SysCtlDelay(10666667);
                   break;
               }
-              case 4: // 11
-              {
-                  GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x04);
-                  GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
-									SysCtlDelay(2666667);
-									  GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
-								  SysCtlDelay(2666667);
-								                  GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x04);
-									SysCtlDelay(2666667);
-                  GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
-                  GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
-								 	SysCtlDelay(10666667);
-                  break;
-              }
-							case 0: // off
+	      default: // off
               {
                   GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
