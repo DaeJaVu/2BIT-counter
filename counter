@@ -31,10 +31,10 @@
 #include "driverlib/interrupt.h"
 #include "inc/tm4c123gh6pm.h"	//manually added by the programmer
 
-#define 	SW1	     		GPIO_PIN_4			// PF4
-#define 	SW2      		GPIO_PIN_0			// PF0
-#define 	red_LED           	GPIO_PIN_1			// PF1 (0x02)
-#define 	blue_LED          	GPIO_PIN_2			// PF2 (0x04)
+#define 	SW1	     		GPIO_PIN_4		// PF4
+#define 	SW2      		GPIO_PIN_0		// PF0
+#define 	red_LED           	GPIO_PIN_1		// PF1 (0x02)
+#define 	blue_LED          	GPIO_PIN_2		// PF2 (0x04)
 
 //*****************************************************************************
 
@@ -138,7 +138,7 @@ int main(void)
 	  {
           switch(c)
           {
-              case 0: //  00
+              case 0: //  00 = red-red
               {
                   GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x02);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
@@ -152,7 +152,7 @@ int main(void)
 		  SysCtlDelay(8000000); // 1.5 second delay				
                   break;
               }
-              case 1: // 01
+              case 1: // 01 = red, blue
               {
 		  GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
                   GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x02);
@@ -165,7 +165,7 @@ int main(void)
 		  SysCtlDelay(8000000);
                   break;
               }
-	       case 2: // 10
+	       case 2: // 10 = blue, red
               {
 		  GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x04);
@@ -178,14 +178,15 @@ int main(void)
 		  SysCtlDelay(8000000);
                   break;
               }
-              case 3: // 10
+ 	      case 3: // 11
               {
-		  GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x04);
-                  SysCtlDelay(2666667);
-                  GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x02);
-                  GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
-		  SysCtlDelay(2666667);
+                  GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
+	          SysCtlDelay(2666667);
+	          GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
+	          SysCtlDelay(2666667);
+	          GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x04);
+	          SysCtlDelay(2666667);
                   GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
                   GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
 		  SysCtlDelay(8000000);
