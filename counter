@@ -120,7 +120,7 @@ Interrupt_Init(void)
 
 
 //interrupt handler
-void GPIOPortF_Handler(void){
+void GPIOPortF_Handler(void ){
 
 	//SW1 is pressed
 	if(GPIO_PORTF_RIS_R&0x10)
@@ -128,7 +128,7 @@ void GPIOPortF_Handler(void){
 		GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
 		GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
 		GPIOPinWrite(GPIO_PORTF_BASE, green_LED, 0x08);
-		SysCtlDelay(2666667/2);
+		SysCtlDelay(2666667/3);
 		GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
 		GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
 		GPIOPinWrite(GPIO_PORTF_BASE, green_LED, 0x00);
@@ -146,7 +146,7 @@ void GPIOPortF_Handler(void){
 		GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
 		GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
 		GPIOPinWrite(GPIO_PORTF_BASE, green_LED, 0x08);
-		SysCtlDelay(2666667/2);
+		SysCtlDelay(2666667/3);
 		GPIOPinWrite(GPIO_PORTF_BASE, red_LED, 0x00);
 		GPIOPinWrite(GPIO_PORTF_BASE, blue_LED, 0x00);
 		GPIOPinWrite(GPIO_PORTF_BASE, green_LED, 0x00);
@@ -156,7 +156,8 @@ void GPIOPortF_Handler(void){
 		//counter decrimented by 1
 		x--;
 	}
-	
+	if (x>3){
+		x=0;}
 }
 
 int main(void)
@@ -171,14 +172,6 @@ int main(void)
 		// blue is 1
 		while(1)
 			{
-				while(x<5)
-				{
-					if(x>3)
-					{
-						x=0;
-					}
-					else 
-					{
 						switch(x)
 						{
 							case 0:
@@ -242,6 +235,6 @@ int main(void)
 								break;
 						}
 					}
-				}	
-			}
+
 }
+
