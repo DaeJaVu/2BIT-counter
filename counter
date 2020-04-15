@@ -93,30 +93,24 @@ Interrupt_Init(void)
 void GPIOPortF_Handler(void)
 {
 	
-	//SW1 is pressed
-	if(GPIO_PORTF_RIS_R&0x10)
+	if(GPIO_PORTF_RIS_R&0x10) // polls SW1
 	{
-		// acknowledge flag for PF4
-		GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_4); 
-		//counter imcremented by 1
-		c++;
+		GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_4); // acknowledge flag for PF4
+		c++; //counter incremented by 1
 	}
 	
-	//SW2 is pressed
-  	if(GPIO_PORTF_RIS_R&0x01)
+  	if(GPIO_PORTF_RIS_R&0x01) // polls SW2
 	{
-		// acknowledge flag for PF0
-		GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_0);
-		//counter imcremented by 1
-		c--;
+		GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_0); // acknowledge flag for PF0
+		c--; //counter decremented by 1
 	}
 	if(c > 3)
 	{
-        	c = 0;
+        	c = 0;  // go back to the beginning
         }
         if(c < 0)
         {
-        	c = 3;
+        	c = 3; // go to the end
         }
 }
 
